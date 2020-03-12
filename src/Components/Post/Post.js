@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import posts from "./../../post_data.json";
+import {Link} from 'react-router-dom';
 import "./Post.css";
 
 class Post extends Component {
@@ -13,7 +14,7 @@ class Post extends Component {
   componentDidMount() {
     // This is where you would make an axios call to a server in a fullstack application
     // but for today we'll be just be filtering an array of dummy data
-    let post = posts.find(post => post.id === 2);
+    let post = posts.find(post => post.id === +this.props.match.params.id);
     this.setState({
       title: post.title,
       content: post.content
